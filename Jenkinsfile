@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'master' // Use 'master' if Jenkins is running on the same machine
+        label 'master' // or 'any' if using the default agent
     }
 
     stages {
@@ -18,7 +18,7 @@ pipeline {
                     def mavenHome = "C:\\Program Files\\apache-maven-3.9.9"
 
                     // Build the project using Maven
-                    bat "${mavenHome}\\bin\\mvn clean package"
+                    bat "\"${mavenHome}\\bin\\mvn\" clean package"
                 }
             }
         }
