@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'master' // or 'any' if using the default agent
+        label 'master' // or 'any'
     }
 
     stages {
@@ -17,8 +17,11 @@ pipeline {
                     // Set the Maven home path
                     def mavenHome = "C:\\Program Files\\apache-maven-3.9.9"
 
-                    // Build the project using Maven
-                    bat "\"${mavenHome}\\bin\\mvn\" clean package"
+                    // Change to the directory containing the pom.xml (if it's in a subdirectory)
+                    dir('subdirectory') { // Replace 'subdirectory' with the actual path
+                        // Build the project using Maven
+                        bat "\"${mavenHome}\\bin\\mvn\" clean package"
+                    }
                 }
             }
         }
